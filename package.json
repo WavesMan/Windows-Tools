@@ -1,18 +1,22 @@
 {
-  "name": "my-electron-app",
-  "version": "1.0.0",
-  "description": "",
+  "name": "windows-tools",
+  "version": "0.0.1",
+  "releaseStage": "Alpha",
+  "description": "A collection of tools for Windows",
   "main": "main.js",
   "scripts": {
     "postinstall": "node ./scripts/electron.js",
     "start": "electron ."
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Windows Tools Team",
+  "license": "GPL-3.0",
   "devDependencies": {
     "electron": "^35.0.0-alpha.2"
   },
   "dependencies": {
     "electron": "^34.0.0"
+  },
+  "dependencies": {
+    "electron-builder": "^22.10.5"
   }
-}
+} 
