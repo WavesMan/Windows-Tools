@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Windows-Tools - 一个轻量的Windows工具集合</title>
+    <meta name="keywords" content="Windows-Tools,工具集合,工具箱,在线工具,Windows工具">
+    <meta name="description" content="一个轻量的Windows工具集合">
+    <link rel="stylesheet" href="./asset/css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<style>
+    /* 去除所有超链接的默认样式 */
+    a {
+        color: inherit;
+        text-decoration: none;
+    }
+    /* 移除鼠标悬停时的下划线效果 */
+    a:hover {
+        text-decoration: none;
+    }
+</style>
+<body>
+    <div id="app">
+        <header class="navbar">
+            <h1 class="title">
+                <a href="/">Windows-Tools - 工具集合</a>
+            </h1>
+        </header>
+        <main>
+            <div class="welcome">
+                <h2>Windows自动更新设置</h2>
+                <p>目前共开发了数十款有趣的Windows小工具，数量还在持续增加中。如果觉得某一款不错，不妨安利给他人使用。</p>
+                <p>遇到任何问题或建议都能在 
+                    <a href="https://github.com/WavesMan/Windows-Tools/discussions/categories/feedback" target="_blank" style="color: #249ffd";>
+                        留言反馈
+                    </a> 进行留言。
+                </p>
+            </div>
+            <div class="tool-categories">
+                <div class="category">
+                    <div class="category-title">
+                        <i class="eva eva-settings-outline"></i>
+                        <span>系统工具</span>
+                    </div>
+                    <div class="tools-list">
+                        <a href="asset\html\system-tools\win-update.html" class="tools-card">
+                            <i class="eva eva-trash-2-outline"></i>
+                            <div class="tools-card-text">
+                                <div class="tools-card-name">Windows自动更新设置</div>
+                                <div class="tools-card-desc">关闭/启用Windows自动更新</div>
+                            </div>
+                        </a>
+                        <a href="asset\html\system-tools\defender-set.html" class="tools-card">
+                            <i class="eva eva-edit-2-outline"></i>
+                            <div class="tools-card-text">
+                                <div class="tools-card-name">Windows Defender设置</div>
+                                <div class="tools-card-desc">关闭/启用Windows Defender</div>
+                            </div>
+                        </a>
+                        <a href="asset\html\system-tools\onedrive-set.html" class="tools-card">
+                            <i class="eva eva-monitor-outline"></i>
+                            <div class="tools-card-text">
+                                <div class="tools-card-name">OneDrive设置</div>
+                                <div class="tools-card-desc">禁用/启用Windows OneDrive</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="category">
+                    <div class="category-title">
+                        <i class="eva eva-network-outline"></i>
+                        <span>网络工具</span>
+                    </div>
+                    <div class="tools-list">
+                        <a href="/ip-scanner" class="tools-card">
+                            <i class="eva eva-globe-outline"></i>
+                            <div class="tools-card-text">
+                                <div class="tools-card-name">IP扫描</div>
+                                <div class="tools-card-desc">扫描局域网内的IP地址</div>
+                            </div>
+                        </a>
+                        <a href="/port-scanner" class="tools-card">
+                            <i class="eva eva-hard-drive-outline"></i>
+                            <div class="tools-card-text">
+                                <div class="tools-card-name">端口扫描</div>
+                                <div class="tools-card-desc">扫描开放的端口</div>
+                            </div>
+                        </a>
+                        <a href="/speed-test" class="tools-card">
+                            <i class="eva eva-speedometer-outline"></i>
+                            <div class="tools-card-text">
+                                <div class="tools-card-name">网速测试</div>
+                                <div class="tools-card-desc">测试你的网络速度</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="category">
+                    <div class="category-title">
+                        <i class="eva eva-file-text-outline"></i>
+                        <span>文件工具</span>
+                    </div>
+                    <div class="tools-list">
+                        <a href="/file-splitter" class="tools-card">
+                            <i class="eva eva-scissors-outline"></i>
+                            <div class="tools-card-text">
+                                <div class="tools-card-name">文件分割</div>
+                                <div class="tools-card-desc">将大文件分割成小文件</div>
+                            </div>
+                        </a>
+                        <a href="/file-encryptor" class="tools-card">
+                            <i class="eva eva-lock-outline"></i>
+                            <div class="tools-card-text">
+                                <div class="tools-card-name">文件加密</div>
+                                <div class="tools-card-desc">加密你的重要文件</div>
+                            </div>
+                        </a>
+                        <a href="/file-compressor" class="tools-card">
+                            <i class="eva eva-archive-outline"></i>
+                            <div class="tools-card-text">
+                                <div class="tools-card-name">文件压缩</div>
+                                <div class="tools-card-desc">压缩文件以节省空间</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer class="footer">
+            <div class="footer-links">
+                <a href="https://github.com/WavesMan/Windows-Tools" class="github-link" target="_blank">
+                    <i class="fa-brands fa-github"></i>
+                    GitHub
+                </a>                
+                <a href="/docs">文档</a>
+                <a href="/feedback">反馈</a>
+            </div>
+            <div class="footer-version">
+                <div>当前版本：<b>Alpha v0.0.1</b></div>
+            </div>
+        </footer>
+    </div>
+    <script src="scripts.js"></script>
+</body>
+</html>

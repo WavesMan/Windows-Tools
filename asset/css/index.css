@@ -1,0 +1,250 @@
+/* 全局样式 */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 标题样式 */
+h1.title {
+    font-size: 24px;
+    color: #fcfcfc;
+    margin: 0;
+    padding: 20px 0;
+    text-align: center;
+}
+
+/* 导航栏样式 */
+.navbar {
+    background-color: #249ffd;
+    color: #fff;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between; /* 左右两侧内容分布 */
+    align-items: center; /* 垂直居中 */
+}
+
+.title {
+    text-align: center; /* 文字水平居中 */
+    flex: 1; /* 让标题占据剩余空间 */
+    margin: 0; /* 去除默认的 h1 上下边距 */
+}
+
+.title a {
+    text-decoration: none; /* 去除链接下划线 */
+    color: inherit; /* 继承父元素颜色 */
+}
+
+.navbar-link-btn {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.navbar-link-btn i {
+    margin-right: 5px;
+}
+
+/* 欢迎信息样式 */
+.welcome {
+    text-align: center;
+    padding: 20px;
+}
+
+.welcome h2 {
+    font-size: 20px;
+    color: #249ffd;
+    margin: 0;
+    padding: 10px 0;
+}
+
+.welcome p {
+    font-size: 16px;
+    margin: 0;
+    padding: 10px 0;
+}
+
+/* 搜索组件样式 */
+.search-component {
+    text-align: center;
+    padding: 20px;
+}
+
+.search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.search i {
+    margin-right: 5px;
+}
+
+.search input {
+    border: none;
+    outline: none;
+    font-size: 16px;
+    width: 100%; /* 输入框宽度自适应 */
+    max-width: 300px; /* 设置最大宽度 */
+}
+
+/* 工具分类样式 */
+.tool-categories {
+    display: flex;
+    justify-content: center; /* 居中显示 */
+    flex-wrap: wrap; /* 允许换行 */
+    padding: 20px;
+    gap: 20px; /* 设置分类之间的间距 */
+}
+
+.category {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    width: 100%; /* 默认宽度占满容器 */
+    max-width: 300px; /* 设置最大宽度 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.category:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.category-title {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.category-title i {
+    margin-right: 5px;
+}
+
+.tools-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* 设置每小栏之间的间距 */
+}
+
+.tools-card {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border-radius: 5px;
+}
+
+.tools-card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: #249ffd;
+}
+
+.tools-card:hover .tools-card-name,
+.tools-card:hover .tools-card-desc,
+.tools-card:hover i {
+    color: #fff;
+}
+
+.tools-card:last-child {
+    border-bottom: none;
+}
+
+.tools-card i {
+    margin-right: 10px;
+    color: #249ffd;
+    transition: color 0.3s ease;
+}
+
+.tools-card a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.tools-card-text {
+    flex: 1;
+}
+
+.tools-card-name {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+.tools-card-desc {
+    font-size: 14px;
+    color: #666;
+    margin: 0;
+    padding: 0;
+    transition: color 0.3s ease;
+}
+
+/* 页脚样式 */
+.footer {
+    background-color: #249ffd;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    position: fixed; /* 固定在底部 */
+    bottom: 0; /* 距离底部0像素 */
+    left: 0; /* 距离左侧0像素 */
+    width: 100%; /* 宽度占满整个屏幕 */
+}
+
+.footer-links {
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: bold; /* 加粗字体 */
+}
+
+.footer-version {
+    font-size: 14px;
+}
+
+/* 媒体查询：根据窗口大小调整布局 */
+@media (max-width: 768px) {
+    .category {
+        width: calc(100% - 40px); /* 小屏幕下占满宽度 */
+        max-width: 100%; /* 取消最大宽度限制 */
+    }
+
+    .tool-categories {
+        gap: 10px; /* 缩小分类之间的间距 */
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .category {
+        width: calc(50% - 30px); /* 中等屏幕下每行显示两个分类 */
+    }
+}
+
+@media (min-width: 1025px) {
+    .category {
+        width: calc(33.33% - 30px); /* 大屏幕下每行显示三个分类 */
+    }
+}
