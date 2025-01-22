@@ -1,0 +1,7 @@
+# 忽略 node_modules 文件夹
+node_modules/
+
+# 忽略 electron.exe 文件
+node_modules/electron/dist/electron.exe
+
+# 其他需要忽略的文件或文件夹
