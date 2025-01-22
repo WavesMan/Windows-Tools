@@ -6,17 +6,41 @@
   "main": "main.js",
   "scripts": {
     "postinstall": "node ./scripts/electron.js",
-    "start": "electron ."
+    "start": "electron .",
+    "build": "electron-builder"
   },
   "author": "Windows Tools Team",
   "license": "GPL-3.0",
   "devDependencies": {
-    "electron": "^35.0.0-alpha.2"
+    "electron": "^35.0.0-alpha.2",
+    "electron-builder": "^25.1.8"
   },
-  "dependencies": {
-    "electron": "^34.0.0"
-  },
-  "dependencies": {
-    "electron-builder": "^22.10.5"
+  "dependencies": {},
+  "build": {
+    "appId": "com.example.windows-tools",
+    "productName": "Windows Tools",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "**/*",
+      "!asset/resources/python/**"
+    ],
+    "extraResources": [
+      {
+        "from": "asset/resources/python",
+        "to": "resources/python",
+        "filter": ["**/*"]
+      }
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "asset/resources/windows.ico",
+      "requestedExecutionLevel": "requireAdministrator"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
   }
-} 
+}
