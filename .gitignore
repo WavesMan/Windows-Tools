@@ -1,4 +1,0 @@
-# 忽略 electron.exe 文件
-node_modules/electron/dist/electron.exe
-
-# 其他需要忽略的文件或文件夹
