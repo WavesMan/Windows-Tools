@@ -1,18 +1,45 @@
 const { app, BrowserWindow } = require('electron');
 const { exec } = require('child_process');
 
+//const { app, BrowserWindow } = require('electron');
+const { createMainWindow } = require('./windowManager');
+const { PythonScript } = require('./pythonscript');
+//const { setupIPC } = require('./ipcHandlers');
+
+app.whenReady().then(() => {
+  createMainWindow(); // 创建主窗口
+  PythonScript();        // Python脚本分文件
+});
+
+app.on('window-all-closed', () => {
+  if (process.platform !== 'darwin') {
+    app.quit();
+  }
+});
+
+////////
+
 function createWindow() {
     const win = new BrowserWindow({
         width: 1400,
         height: 800,
         webPreferences: {
             nodeIntegration: true, // 允许在渲染进程中使用 Node.js
-            contextIsolation: false // 禁用上下文隔离
+            contextIsolation: false, // 禁用上下文隔离
+            devTools: false, // 禁用开发者工具
         }
     });
 
     win.loadFile('index.html'); // 加载 HTML 文件
 }
+
+    // 移除菜单栏
+    Menu.setApplicationMenu(null);
+
+    // 禁用右键菜单
+    mainWindow.webContents.on('context-menu', (e) => {
+        e.preventDefault();
+    });
 
 app.whenReady().then(createWindow);
 
@@ -28,6 +55,8 @@ app.on('activate', () => {
     }
 });
 
+
+// PythonScript
 // 监听前端事件
 const { ipcMain } = require('electron');
 const { dialog } = require('electron');
