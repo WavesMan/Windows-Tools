@@ -5,15 +5,14 @@
   "description": "A collection of tools for Windows",
   "main": "./main/main.js",
   "scripts": {
-    "postinstall": "node ./scripts/electron.js",
-    "start": "set NODE_ENV=development&& electron .",
-    "build": "set NODE_ENV=production&& electron-builder"
+    "start": "electron .",
+    "build": "electron-builder --win"
   },
   "author": "Windows Tools Team",
   "license": "GPL-3.0",
   "devDependencies": {
-    "electron": "^35.0.0-alpha.2",
-    "electron-builder": "^25.1.8"
+    "electron": "^34.0.1",
+    "electron-builder": "^24.6.3"
   },
   "dependencies": {
     "glob": "^11.0.1"
@@ -44,7 +43,17 @@
     },
     "nsis": {
       "oneClick": false,
-      "allowToChangeInstallationDirectory": true
+      "allowToChangeInstallationDirectory": true,
+      "installerIcon": "asset/resources/windows.ico",
+      "uninstallerIcon": "asset/resources/windows.ico",
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "menuCategory": true,
+      "allowElevation": true,
+      "perMachine": true,
+      "license": "asset/resources/LICENSE.txt",
+      "include": "installer.nsh",
+      "warningsAsErrors": false
     }
   }
 }

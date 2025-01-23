@@ -1,43 +1,47 @@
-const { exec } = require('child_process'); // 导入 exec 函数
-const { dialog } = require('electron'); // 导入 dialog 模块
-const path = require('path'); // 导入 path 模块
-const { getPythonDirPath } = require('./path.to.python'); // 导入 getPythonDirPath 函数
+const { exec } = require('child_process');
+const { dialog } = require('electron');
+const { getPythonExePath, getPythonScriptPath } = require('./path.to.python');
 
 class PythonScript {
-  constructor() {
-    // 获取 Python 目录路径
-    this.pythonDirPath = getPythonDirPath();
-    console.log('Python 目录路径:', this.pythonDirPath); // 调试日志
-  }
-
   // 执行 Python 脚本的通用方法
   runPythonScript(scriptName, event, successMessage) {
-    const scriptPath = path.join(this.pythonDirPath, scriptName);
-    console.log('Python 脚本路径:', scriptPath); // 调试日志
+    try {
+      const scriptPath = getPythonScriptPath(scriptName);
+      console.log('Python 脚本路径:', scriptPath); // 调试日志
 
-    const command = process.platform === 'win32' 
-      ? `cmd.exe /c python "${scriptPath}"` // Windows 下以交互模式运行
-      : `python3 "${scriptPath}"`; // macOS/Linux 下直接运行
+      // 构建执行命令
+      const command = `"python" "${scriptPath}"`;
 
-    exec(command, { encoding: 'utf8' }, (error, stdout, stderr) => {
-      if (error) {
-        event.reply(`${scriptName}-output`, 'Error: ' + stderr);
-        dialog.showMessageBox({
-          type: 'error',
-          title: '操作失败',
-          message: `执行 ${scriptName} 失败，请检查权限或重试。`,
-        });
-      } else {
-        event.reply(`${scriptName}-output`, stdout);
-        if (stdout.includes("成功")) {
+      // 使用 exec 执行命令，并确保命令窗口可见
+      exec(command, { windowsHide: false, encoding: 'utf8' }, (error, stdout, stderr) => {
+        if (error) {
+          console.error(`执行 ${scriptName} 失败:`, stderr); // 调试日志
+          event.reply(`${scriptName}-output`, 'Error: ' + stderr);
           dialog.showMessageBox({
-            type: 'info',
-            title: '操作成功',
-            message: successMessage,
+            type: 'error',
+            title: '操作失败',
+            message: `执行 ${scriptName} 失败，请检查权限或重试。`,
           });
+        } else {
+          console.log(`执行 ${scriptName} 成功:`, stdout); // 调试日志
+          event.reply(`${scriptName}-output`, stdout);
+          if (stdout.includes("成功")) {
+            dialog.showMessageBox({
+              type: 'info',
+              title: '操作成功',
+              message: successMessage,
+            });
+          }
         }
-      }
-    });
+      });
+    } catch (error) {
+      console.error('获取 Python 脚本路径失败:', error);
+      dialog.showMessageBox({
+        type: 'error',
+        title: '操作失败',
+        message: `未找到 Python 脚本: ${scriptName}`,
+      });
+    }
   }
 
   // Windows 自动更新管理

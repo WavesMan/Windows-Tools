@@ -1,7 +1,20 @@
 {
-  "customExclude": [
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "*": [
+        "*"
+      ]
+    }
+  },
+  "exclude": [
     "dist",
     "jsconfig.json",
-    ".vscode"
+    ".vscode",
+    "asset/resources/python/myenv"
+  ],
+  "customExclude": [
+    "dist",
+    "File-tree.txt"
   ]
 }

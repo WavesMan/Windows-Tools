@@ -7,7 +7,7 @@ function createMainWindow() {
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
-      devTools: true, // 启用开发者工具
+      devTools: false, // 禁用开发者工具
     },
     show: true, // 确保窗口默认显示
   });
@@ -27,7 +27,7 @@ function createMainWindow() {
   });
 
   // 打开开发者工具
-  mainWindow.webContents.openDevTools();
+  // mainWindow.webContents.openDevTools();
 
   return mainWindow; // 返回创建的窗口对象
 }

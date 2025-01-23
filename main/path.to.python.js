@@ -1,34 +1,59 @@
 const path = require('path');
-const { app } = require('electron'); // 导入 app 模块
-const { globSync } = require('glob'); // 导入 globSync 函数
-
-// 定义一个同步函数来查找python.exe文件
-function findPythonExeSync() {
-  let pythonDirPath;
-
-  if (process.env.NODE_ENV === 'development') {
-    // 开发环境：从项目根目录查找
-    pythonDirPath = path.join(__dirname, '..', 'asset', 'resources', 'python');
-  } else {
-    // 封包环境：从资源目录查找
-    pythonDirPath = path.join(process.resourcesPath, 'python');
-  }
-
-  // 检查 python.exe 是否存在
-  const pythonExePath = path.join(pythonDirPath, 'python.exe');
-  if (!globSync(pythonExePath).length) {
-    throw new Error(`python.exe not found in: ${pythonDirPath}`);
-  }
-
-  console.log('Python 目录路径:', pythonDirPath); // 调试日志
-  return pythonDirPath;
-}
+const fs = require('fs');
 
 // 获取 Python 目录路径
-const pythonDirPath = findPythonExeSync();
+function getPythonDirPath() {
+  // 假设 Python 安装在系统的默认路径
+  const pythonDir = process.env.PYTHON_DIR || 'C:\\Python39'; // 默认路径，可以根据实际情况修改
+  return pythonDir;
+}
 
-// 创建一个函数来返回python.exe所在的目录路径
-const getPythonDirPath = () => pythonDirPath;
+// 获取 Python 解释器路径
+function getPythonExePath() {
+  const pythonDir = getPythonDirPath();
+  const pythonExe = path.join(pythonDir, 'python.exe'); // Windows 下为 python.exe
+  return pythonExe;
+}
 
-// 导出 getPythonDirPath 函数
-module.exports = { getPythonDirPath };
+// 获取 Python 脚本路径
+function getPythonScriptPath(scriptName) {
+  // 开发环境下，使用项目根目录的相对路径
+  const devPath = path.join(__dirname, '..', 'asset', 'resources', 'python', scriptName);
+
+  // 打包后，使用 process.resourcesPath 获取资源路径
+  const prodPath = path.join(process.resourcesPath, 'resources', 'python', scriptName);
+
+  // 检查路径是否存在
+  if (fs.existsSync(devPath)) {
+    return devPath;
+  } else if (fs.existsSync(prodPath)) {
+    return prodPath;
+  } else {
+    throw new Error(`未找到 Python 脚本: ${scriptName}`);
+  }
+}
+
+// 获取 Python 安装程序路径
+function getPythonInstallerPath() {
+  // 开发环境下，使用项目根目录的相对路径
+  const devPath = path.join(__dirname, '..', 'asset', 'resources', 'python', 'python-3.13.1-amd64.exe');
+
+  // 打包后，使用 process.resourcesPath 获取资源路径
+  const prodPath = path.join(process.resourcesPath, 'resources', 'python', 'python-3.13.1-amd64.exe');
+
+  // 检查路径是否存在
+  if (fs.existsSync(devPath)) {
+    return devPath;
+  } else if (fs.existsSync(prodPath)) {
+    return prodPath;
+  } else {
+    throw new Error('未找到 Python 安装程序');
+  }
+}
+
+module.exports = {
+  getPythonDirPath,
+  getPythonExePath,
+  getPythonScriptPath,
+  getPythonInstallerPath,
+};
