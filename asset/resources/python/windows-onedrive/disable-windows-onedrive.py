@@ -1,6 +1,7 @@
 import subprocess
 import ctypes
 import sys
+import os
 
 def is_admin():
     """检查是否以管理员身份运行"""
@@ -31,5 +32,8 @@ if __name__ == "__main__":
         ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, " ".join(sys.argv), None, 1)
 
 
-    # 等待用户输入后再关闭窗口
-    input("按 Enter 键退出...")
+# # 你的脚本逻辑
+# print("脚本运行完成！")
+
+# 等待用户按任意键退出
+os.system('pause')

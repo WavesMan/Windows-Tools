@@ -1,13 +1,13 @@
 {
   "name": "windows-tools",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "releaseStage": "Alpha",
   "description": "A collection of tools for Windows",
-  "main": "main.js",
+  "main": "./main/main.js",
   "scripts": {
     "postinstall": "node ./scripts/electron.js",
-    "start": "electron .",
-    "build": "electron-builder"
+    "start": "set NODE_ENV=development&& electron .",
+    "build": "set NODE_ENV=production&& electron-builder"
   },
   "author": "Windows Tools Team",
   "license": "GPL-3.0",
@@ -15,7 +15,9 @@
     "electron": "^35.0.0-alpha.2",
     "electron-builder": "^25.1.8"
   },
-  "dependencies": {},
+  "dependencies": {
+    "glob": "^11.0.1"
+  },
   "build": {
     "appId": "com.example.windows-tools",
     "productName": "Windows Tools",
@@ -30,7 +32,9 @@
       {
         "from": "asset/resources/python",
         "to": "resources/python",
-        "filter": ["**/*"]
+        "filter": [
+          "**/*"
+        ]
       }
     ],
     "win": {

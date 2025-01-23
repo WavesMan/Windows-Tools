@@ -1,0 +1,7 @@
+{
+  "customExclude": [
+    "dist",
+    "jsconfig.json",
+    ".vscode"
+  ]
+}
