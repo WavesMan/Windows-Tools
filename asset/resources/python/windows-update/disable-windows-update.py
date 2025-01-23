@@ -37,8 +37,6 @@ if __name__ == "__main__":
         # 以管理员身份重新运行脚本
         ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, " ".join(sys.argv), None, 1)
 
-    # 等待用户输入后再关闭窗口
-    input("按 Enter 键退出...")
 
 # # 你的脚本逻辑
 # print("脚本运行完成！")
