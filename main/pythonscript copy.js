@@ -7,9 +7,6 @@ class PythonScript {
   runPythonScript(scriptName, event, successMessage) {
     try {
       const scriptPath = getPythonScriptPath(scriptName);
-      const pythonExePath = getPythonExePath();
-
-      console.log('Python 可执行文件路径:', pythonExePath); // 调试日志
       console.log('Python 脚本路径:', scriptPath); // 调试日志
 
       // 构建执行命令

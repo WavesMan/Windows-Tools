@@ -1,7 +1,7 @@
 const { BrowserWindow, Menu } = require('electron');
 
 function createMainWindow() {
-  const mainWindow = new BrowserWindow({
+  let mainWindow = new BrowserWindow({
     width: 1400,
     height: 800,
     webPreferences: {
@@ -25,9 +25,6 @@ function createMainWindow() {
   mainWindow.webContents.on('context-menu', (e) => {
     e.preventDefault();
   });
-
-  // 打开开发者工具
-  // mainWindow.webContents.openDevTools();
 
   return mainWindow; // 返回创建的窗口对象
 }

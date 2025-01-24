@@ -23,7 +23,7 @@ async function initializeApp() {
     }
 
     // 设置 IPC 事件监听
-    const pythonScript = new PythonScript(); // 正确初始化 PythonScript 实例
+    const pythonScript = new PythonScript();
     ipcMain.on('disable-updates', (event) => pythonScript.disableUpdates(event));
     ipcMain.on('enable-updates', (event) => pythonScript.enableUpdates(event));
     ipcMain.on('disable-defender', (event) => pythonScript.disableDefender(event));
